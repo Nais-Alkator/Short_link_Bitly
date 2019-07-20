@@ -42,18 +42,19 @@ def get_parser():
   parser = argparse.ArgumentParser(
 	description='Скрипт выполняет сокращение ссылки (битлинк) либо показывает количество переходов по битлинку')
   parser.add_argument('parser_link', help='Ссылка для сокращения')
+  return parser
   args = parser.parse_args()
   parser_link = args.parser_link
   return parser_link
 
 if __name__ == "__main__":
-  parser_link = get_parser()
-
-  if parser_link.startswith("http://") or parser_link.startswith("https://"):
-    short_link = shorten_link(parser_link)
+  args = get_parser().parse_args()
+  link = args.parser_link
+  if link.startswith("http://") or link.startswith("https://"):
+    short_link = shorten_link(link)
     print("Сокращенная ссылка:", short_link)
-  elif parser_link == get_bitlink_id(parser_link):
-    total_clicks = count_link_clicks(parser_link)
+  elif link == get_bitlink_id(link):
+    total_clicks = count_link_clicks(link)
     print("Количество переходов по ссылке:", total_clicks)
   else:
     print("Некорректная ссылка")
