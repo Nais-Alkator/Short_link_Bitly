@@ -43,10 +43,7 @@ def get_parser():
 	description='Скрипт выполняет сокращение ссылки (битлинк) либо показывает количество переходов по битлинку')
   parser.add_argument('parser_link', help='Ссылка для сокращения')
   return parser
-  args = parser.parse_args()
-  parser_link = args.parser_link
-  return parser_link
-
+  
 if __name__ == "__main__":
   args = get_parser().parse_args()
   link = args.parser_link
